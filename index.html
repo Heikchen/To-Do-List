@@ -16,6 +16,7 @@
 <body>
     <div class="container">
 <div class="sidebar">
+    <div>
     <div class="input-icons">
         <i class="fa fa-search icon"></i>
     <input type = "text" id="search" placeholder="Search" >
@@ -25,6 +26,7 @@
         <img class="lists-origin-image"src="assets/vecteezy_star_1189045.png">
 <p>Important</p>
     </div>
+    
     <div class="lists-origin-each">
         <img class="lists-origin-image" src="assets/PinClipart.com_clipart-krank_5815277.png">
         <p>Completed</p>
@@ -34,13 +36,14 @@
         <p>All</p>
     </div>
     </div>
+    </div>
     <div class="list-container">
         <div class="list">
-<p class="list-each">Work</p>
+<input id="list-each" class ="list-input"value="">
 <p id="number-of-tasks"> 5</p>
         </div>
     </div>
-    <div class="input-icons">
+    <div class="input-icons create-new-list">
         <i class="fa fa-plus icon"></i>
     <button id ="new-list"> New List</button>
     </div>

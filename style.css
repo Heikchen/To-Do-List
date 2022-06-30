@@ -19,7 +19,7 @@ input {
   margin: auto;
   padding-top: 40px;
   display: grid;
-  grid-template-columns: 1.5fr 7fr;
+  grid-template-columns: 1.5fr 8fr;
   justify-content: center;
   align-content: center;
 }
@@ -27,11 +27,14 @@ input {
   background-color: var(--primary-grey-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: stretch;
   row-gap: 15px;
   padding: 15px;
   padding-top: 50px;
+  min-height: 500px;
+  max-height: 650px;
+  width: 200px;
 }
 .input-icons i {
   position: absolute;
@@ -46,12 +49,13 @@ input {
   width: 80%;
   color: var(--secondary-grey-color);
   padding-left: 35px;
+  margin-bottom: 15px;
   background-color: var(--third-grey-color);
 }
 
 .list-container {
-  min-height: 750px;
-  max-height: 1440px;
+  overflow: auto;
+  height: 450px;
 }
 .lists-origin,
 .list-container {
@@ -61,6 +65,8 @@ input {
   align-items: flex-start;
   padding-bottom: 15px;
   row-gap: 15px;
+}
+.lists-origin {
   border-bottom: 1px solid var(--secondary-grey-color);
 }
 .lists-origin-image {
@@ -73,15 +79,21 @@ input {
   gap: 15px;
 }
 .list {
-  display: flex;
+  display: none;
   justify-content: space-between;
-  column-gap: 116px;
 }
-.list-each {
-  padding-left: 30px;
+.list-input {
+  width: fit-content;
+  margin-left: 30px;
+  border: none;
+  background-color: transparent;
 }
 #number-of-tasks {
   color: var(--secondary-grey-color);
+}
+.create-new-list {
+  padding-top: 15px;
+  border-top: 1px solid var(--secondary-grey-color);
 }
 #new-list {
   border: none;
@@ -99,6 +111,8 @@ input {
   align-items: center;
   padding: 15px;
   padding-top: 50px;
+  min-height: 500px;
+  max-height: 650px;
 }
 
 .task-header {
@@ -127,9 +141,9 @@ input {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  min-height: 750px;
-  max-height: 1440px;
+  height: 600px;
   width: 90%;
+  overflow: auto;
 }
 .task-each-container {
   background-color: var(--primary-white-color);
@@ -237,7 +251,6 @@ input {
 
 #add-task-container {
   width: 90%;
-  margin-top: 150px;
 }
 .input-icons-task i {
   position: absolute;
