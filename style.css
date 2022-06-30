@@ -63,8 +63,7 @@ input {
   row-gap: 15px;
   border-bottom: 1px solid var(--secondary-grey-color);
 }
-.lists-origin-image,
-.task-important {
+.lists-origin-image {
   width: 15px;
 }
 .lists-origin-each {
@@ -95,10 +94,34 @@ input {
 .main-section {
   background-color: var(--primary-blue-color);
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   padding: 15px;
   padding-top: 50px;
+}
+
+.task-header {
+  display: flex;
+  width: 90%;
+  align-self: center;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.more-btn {
+  border: none;
+  width: 30px;
+  color: var(--primary-grey-color);
+  background-color: var(--fourth-grey-color);
+  border-radius: 8px;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  text-align: end;
+}
+.task-list {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 .task-container {
   display: flex;
@@ -169,13 +192,7 @@ input {
 .round input[type="checkbox"]:checked + label:after {
   opacity: 1;
 }
-.task-list {
-  font-size: 24px;
-  font-weight: 600;
-  align-self: flex-start;
-  padding-left: 25px;
-  margin-bottom: 15px;
-}
+
 .star {
   display: inline-block;
   border: none;
