@@ -177,13 +177,9 @@ input {
   margin-bottom: 15px;
 }
 .star {
-  position: relative;
-
   display: inline-block;
   border: none;
   font-size: 14px;
-  margin: 50px auto;
-  left: 36%;
   transform: translateX(-50%);
 }
 
@@ -202,6 +198,7 @@ input {
   position: relative;
   float: right;
   cursor: pointer;
+  left: 25px;
   color: var(--primary-grey-color);
 }
 
