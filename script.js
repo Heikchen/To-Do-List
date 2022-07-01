@@ -23,5 +23,33 @@ newListBtn.onclick = CreateNewList;
 //checkboxes change if task is done and different class
 //Priority of tasks /drag and drop / highlight
 //clean list
+//task assign to list
 //add new tasks
-//search for tasks
+const newTasksInput = document.getElementById("add-task");
+const newTasksDiv = document.querySelector(".task-container");
+let newTaskArray = [];
+
+function createNewTask() {
+  const idCheckboxRound = `checkbox-${newTaskArray.length}`;
+  const idCheckboxStar = `star-${newTaskArray.length}`;
+
+  newTasksDiv.innerHTML += `<div class="task-each-container"><div class="task-each">
+        <div class="round">
+<input type="checkbox"  id="${idCheckboxRound}" />
+<label for="${idCheckboxRound}"></label>
+</div>
+<input class="task-name" type="text" value="${newTasksInput.value}">
+</div>
+<div class="star">
+    <input type="checkbox" id="${idCheckboxStar}" />
+    <label for="${idCheckboxStar}"></label>
+</div>
+</div>
+`;
+  const taskCheckbox = document.getElementsByClassName("task-each-container");
+  newTaskArray = taskCheckbox;
+  console.log(newTaskArray);
+}
+
+newTasksInput.onchange = createNewTask;
+//search for task

@@ -139,11 +139,12 @@ input {
 }
 .task-container {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   height: 600px;
-  width: 90%;
-  overflow: auto;
+  width: 85%;
+  row-gap: 5px;
 }
 .task-each-container {
   background-color: var(--primary-white-color);
@@ -159,10 +160,12 @@ input {
 }
 .task-each {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 .task-name {
-  padding-left: 15px;
+  margin-left: 15px;
+  border: none;
+  width: fit-content;
 }
 .round {
   position: relative;
