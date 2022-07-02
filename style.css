@@ -80,7 +80,7 @@ input {
   cursor: pointer;
 }
 .list {
-  display: none;
+  display: flex;
   justify-content: space-between;
 }
 .list-input {

@@ -1,37 +1,39 @@
 //Different Boxes for Different Lists for example Grocceries, work etc.
 const newListBtn = document.getElementById("new-list");
-const newListDiv = document.querySelector(".list");
 const mainSection = document.querySelector(".task-header");
-let newListArray = [];
+const newlist = document.querySelector(".list-container");
+let newListArray = document.querySelectorAll(".list");
+let headerTask = document.querySelector(".task-list");
 let newTasksDiv = document.querySelectorAll(".task-container");
 
 function CreateNewList() {
-  newListDiv.style.display = "flex";
   for (i = 0; i < newTasksDiv.length; i++) {
     newTasksDiv[i].style.display = "none";
   }
+  headerTask.innerText = "";
   console.log(newTasksDiv);
-  let listElement = newListDiv.cloneNode(true);
-  listElement.id = "new-List" + newListArray.length;
-  document.querySelector(".list-container").appendChild(listElement);
-  const newListChildren = document.querySelectorAll(
-    "#new-List" + newListArray.length + " > *"
+  newlist.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="list" >
+<input id="${newListArray.length}" ondblclick="switchList()" onchange="headerTaskBoard()"class ="list-input"value="">
+<p id="number-of-tasks"> 5</p>
+        </div>`
   );
-  const newListInput = newListChildren[0];
+  console.log(newListArray);
   mainSection.insertAdjacentHTML(
     "afterend",
     `<div class="task-container" id="list-${newListArray.length}">
 
   </div>`
   );
+  headerTaskBoard();
   newTasksDiv = document.querySelectorAll(".task-container");
+
   console.log(newTasksDiv);
+  console.log(headerTask);
   newTasksDiv[0].style.display = "flex";
-  newListInput.removeAttribute("id");
-  newListInput.id = newListArray.length;
   document.getElementById(newListArray.length).focus();
-  newListDiv.style.display = "none";
-  newListArray.push(listElement);
+  newListArray = document.querySelectorAll(".list");
   console.log(newListArray);
 }
 newListBtn.onclick = CreateNewList;
@@ -44,10 +46,13 @@ function switchList() {
     newTasksDiv[i].style.display = "none";
   }
   const currentActiveInput = document.activeElement.id;
+  console.log(currentActiveInput);
   const currentActiveDiv = document.getElementById(
     `list-${currentActiveInput}`
   );
+  console.log(currentActiveDiv);
   currentActiveDiv.style.display = "flex";
+  headerTaskBoard();
 }
 //add new tasks
 const newTasksInput = document.getElementById("add-task");
@@ -81,7 +86,18 @@ function createNewTask() {
     }
   }
 }
-const headerTask = document.querySelector(".task-list");
-function headerTaskBoard() {}
+
+function headerTaskBoard() {
+  console.log(newTasksDiv);
+  for (i = 0; i < newTasksDiv.length; i++) {
+    if (newTasksDiv[i].style.display === "flex") {
+      const changeValue = document.querySelectorAll(".list-input");
+
+      console.log(changeValue);
+      headerTask.innerText = changeValue[i].value;
+    }
+  }
+}
+
 newTasksInput.onchange = createNewTask;
 //search for task
