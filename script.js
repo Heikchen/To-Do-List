@@ -96,40 +96,43 @@ function hideTaskBoards() {
 //add new tasks
 const newTasksInput = document.getElementById("add-task");
 
-let current_tasks = [];
+let currentTasks = [];
 
 function createNewTask() {
-  const idCheckboxRound = `checkbox-${current_tasks.length}`;
-  const idCheckboxStar = `star-${current_tasks.length}`;
-  const idCheckboxDivRound = `round-${current_tasks.length}`;
-  const idInput = `input-${current_tasks.length}`;
+  const currentTasksHalf = currentTasks.length / 2;
+  console.log(currentTasksHalf);
+  const idCheckboxRound = `checkbox-${currentTasksHalf}`;
+  const idCheckboxStar = `star-${currentTasksHalf}`;
+  const idCheckboxDivRound = `round-${currentTasksHalf}`;
+  const idInput = `input-${currentTasksHalf}`;
   console.log(newTasksDiv);
   for (i = 0; i < newTasksDiv.length; i++) {
     if (newTasksDiv[i].style.display === "flex") {
+      const listElementNumber = newTasksDiv[i].id;
       newTasksDiv[
         i
       ].innerHTML += `<div class="task-each-container" id="${idCheckboxDivRound}">
   <div class="task-each" >
         <div class="round" >
-<input type="checkbox" name="checkbox" id="${idCheckboxRound}" onclick="switchClass('${idCheckboxDivRound}','${idInput}')" />
+<input type="checkbox" name="checkbox" id="${idCheckboxRound}" onclick="switchClass('${idCheckboxDivRound}','${idInput}', '${currentTasksHalf}', '${listElementNumber}')" />
 <label for="${idCheckboxRound}"></label>
 </div>
 <input class="task-name" id="${idInput}"type="text" value="${newTasksInput.value}">
 </div>
 <div class="star">
-    <input type="checkbox" id="${idCheckboxStar}" />
+    <input type="checkbox" id="${idCheckboxStar}" onclick="checkedStar('${idCheckboxDivRound}','${currentTasksHalf}')"/>
     <label for="${idCheckboxStar}"></label>
 </div>
 </div>
 `;
+      cloneElement(idCheckboxDivRound, "All");
       const taskCheckbox = document.querySelectorAll(".task-each-container");
-      current_tasks = taskCheckbox;
+      currentTasks = taskCheckbox;
       newTasksInput.value = "";
-      console.log(current_tasks);
+      console.log(currentTasks);
     }
   }
 }
-
 function headerTaskBoard() {
   console.log(newTasksDiv);
   for (i = 0; i < newTasksDiv.length; i++) {
@@ -143,17 +146,98 @@ function headerTaskBoard() {
 
 newTasksInput.onchange = createNewTask;
 
-//search for task
-//checkboxes change if task is done and different class
+function switchClass(element, inputElement, number, listElement) {
+  let targetDiv = document.querySelectorAll(`#${element}`);
+  console.log(targetDiv);
 
-/*for (i = 0; i < current_tasks.length; i++) {
-  completedCurrentTask[0].addEventListener("click", function () {
-    console.log("hello");
-  });
-} */
-function switchClass(element, inputElement) {
-  let targetDiv = document.getElementById(element);
   const targetInput = document.getElementById(inputElement);
-  targetDiv.classList.toggle("completed");
+  targetDiv[0].classList.toggle("completed");
   targetInput.classList.toggle("completed");
+  let listAllElement = document.querySelectorAll("#All.standard-list");
+  checkedStandardLists(listAllElement, targetDiv, number);
+  isChecked(targetDiv, listElement);
+}
+function checkedStandardLists(idList, targetDiv, number) {
+  let listCompletedElement = document.querySelectorAll(
+    "#Completed.standard-list"
+  );
+  let listElement = idList[0];
+  if (targetDiv[0].children[0].children[0].children[0].checked) {
+    console.log(targetDiv[0].children[1].children[0]);
+    console.log(number);
+    listElement.children[
+      number
+    ].children[0].children[0].children[0].checked = true;
+
+    listElement.children[number].classList.add("completed");
+    listElement.children[number].children[0].children[1].classList.add(
+      "completed"
+    );
+  } else {
+    console.log(targetDiv);
+    console.log(listCompletedElement);
+    listElement.children[
+      number
+    ].children[0].children[0].children[0].checked = false;
+    listElement.children[number].classList.remove("completed");
+    listElement.children[number].children[0].children[1].classList.remove(
+      "completed"
+    );
+    listCompletedElement[0].children[
+      number
+    ].children[0].children[0].children[0].checked = false;
+
+    listCompletedElement[0].children[number].classList.remove("completed");
+    listCompletedElement[0].children[
+      number
+    ].children[0].children[1].classList.remove("completed");
+  }
+}
+function checkedStar(element, number) {
+  let listImportantElement = document.querySelectorAll(
+    "#Important.standard-list"
+  );
+  let targetDiv = document.querySelectorAll(`#${element}`);
+  let listElement = document.querySelectorAll("#All.standard-list")[0];
+  console.log(listElement);
+  if (targetDiv[0].children[1].children[0].checked) {
+    console.log(number);
+    console.log(listElement.children[number].children[1].children[0]);
+    listElement.children[number].children[1].children[0].checked = true;
+    cloneElement(element, "Important");
+  } else {
+    listElement.children[number].children[1].children[0].checked = false;
+    listImportantElement[0].children[
+      number
+    ].children[1].children[0].checked = false;
+    console.log(
+      listImportantElement[0].children[number].children[1].children[0]
+    );
+    deleteClone(number);
+  }
+}
+
+function isChecked(divChecked, listElement) {
+  let listCompleted = document.querySelector("#Completed.standard-list");
+  let parent = divChecked[0].parentElement.id;
+  if (
+    divChecked[1].children[0].children[0].children[0].checked &&
+    parent != "All"
+  ) {
+    listCompleted.appendChild(divChecked[0]);
+  } else if (!divChecked[0].children[0].children[0].children[0].checked) {
+    document.getElementById(listElement).appendChild(divChecked[1]);
+  }
+}
+function cloneElement(cloneNode, list) {
+  let divClone = document.getElementById(cloneNode);
+  let cloneCompleted = divClone.cloneNode(true);
+  document.querySelector(`#${list}`).appendChild(cloneCompleted);
+}
+
+function deleteClone(element) {
+  let listImportantElement = document.querySelectorAll(
+    "#Important.standard-list"
+  );
+  listImportantElement[0].children[element].remove();
 }
