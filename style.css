@@ -139,11 +139,12 @@ input {
 }
 .task-container {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   height: 600px;
-  width: 90%;
-  overflow: auto;
+  width: 85%;
+  row-gap: 5px;
 }
 .task-each-container {
   background-color: var(--primary-white-color);
@@ -248,7 +249,13 @@ input {
 .star input:checked ~ label:before {
   color: var(--primary-yellow-color);
 }
-
+.standard-list {
+  cursor: pointer;
+}
+.completed {
+  background-color: var(--secondary-grey-color);
+  text-decoration: line-through;
+}
 #add-task-container {
   width: 90%;
 }
