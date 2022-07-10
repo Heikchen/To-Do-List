@@ -6,24 +6,6 @@ const tasksContaier = document.querySelector(".main-section");
 const standardText = document.querySelectorAll("#standard-text");
 const standardListsContainer = document.querySelectorAll(".lists-origin-each");
 
-function CreateNewList() {
-  newListDiv.style.display = "flex";
-  let listElement = newListDiv.cloneNode(true);
-  listElement.id = "new-List" + newListArray.length;
-  document.querySelector(".list-container").appendChild(listElement);
-  const newListChildren = document.querySelectorAll(
-    "#new-List" + newListArray.length + " > *"
-  );
-  const newListInput = newListChildren[0];
-  console.log(newListChildren);
-  newListInput.removeAttribute("id");
-  newListInput.id = "list-each" + newListArray.length;
-  document.getElementById("list-each" + newListArray.length).focus();
-  newListArray.push(listElement);
-  newListDiv.style.display = "none";
-}
-newListBtn.onclick = CreateNewList;
-
 //Priority of tasks /drag and drop / highlight
 //clean list
 //add new tasks
