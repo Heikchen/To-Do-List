@@ -79,7 +79,7 @@ input {
   gap: 15px;
 }
 .list {
-  display: none;
+  display: flex;
   justify-content: space-between;
 }
 .list-input {
