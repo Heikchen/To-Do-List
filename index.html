@@ -19,21 +19,21 @@
     <div>
     <div class="input-icons">
         <i class="fa fa-search icon"></i>
-    <input type = "text" id="search" placeholder="Search" >
+    <input type = "text" id="search" onkeyup="search()"placeholder="Search" >
 </div>
     <div class="lists-origin">
         <div class="lists-origin-each">
         <img class="lists-origin-image"src="assets/vecteezy_star_1189045.png">
-<p>Important</p>
+<p id="important" onclick="standardList('important')" class="standard-list">Important</p>
     </div>
     
-    <div class="lists-origin-each">
+    <div class="lists-origin-each" >
         <img class="lists-origin-image" src="assets/PinClipart.com_clipart-krank_5815277.png">
-        <p>Completed</p>
+        <p id="completed" onclick="standardList('done')" class="standard-list">Completed</p>
     </div>
     <div class="lists-origin-each">
         <img class="lists-origin-image" src="assets/clipart.png">
-        <p>All</p>
+        <p id="all"onclick="standardList('all')" class="standard-list">All</p>
     </div>
     </div>
     </div>
@@ -50,19 +50,7 @@
 <button class="more-btn"> ...</button>
 </div>
 <div class="task-container">
-<div class="task-each-container">
-    <div class="task-each">
-        <div class="round">
-<input type="checkbox"  id="checkbox" />
-<label for="checkbox"></label>
-</div>
-<p class="task-name">Important</p>
-</div>
-<div class="star">
-    <input type="checkbox"  id="checkbox-star" />
-    <label for="checkbox-star"></label>
-</div>
-</div>
+
 </div>
 <div class="input-icons-task" id="add-task-container">
     <i class="fa fa-plus icon"></i>
