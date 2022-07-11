@@ -1,17 +1,7 @@
 //Different Boxes for Different Lists for example Grocceries, work etc.
 const newListBtn = document.getElementById("new-list");
-<<<<<<< HEAD
 const addTask = document.getElementById("add-task-container");
-=======
-const newListDiv = document.querySelector(".list");
-const newListArray = [newListDiv];
 
-const tasksContaier = document.querySelector(".main-section");
-const standardText = document.querySelectorAll("#standard-text");
-const standardListsContainer = document.querySelectorAll(".lists-origin-each");
-
-
->>>>>>> 816ca2841ae8ba6476538136a2d41b4be74d0256
 let todoLists = [];
 const newlist = document.querySelector(".list-container");
 let listNumber = 0;
@@ -101,16 +91,13 @@ function updatePropertyValue(elementId) {
   }
 }
 
-<<<<<<< HEAD
 const tasksContaier = document.querySelector(".main-section");
 const standardText = document.querySelectorAll("#standard-text");
 const standardListsContainer = document.querySelectorAll(".lists-origin-each");
 
-=======
 //checkboxes change if task is done and different class
 //Priority of tasks /drag and drop / highlight
 //clean list
->>>>>>> 816ca2841ae8ba6476538136a2d41b4be74d0256
 //add new tasks
 let todoItems = [];
 let input = document.querySelector("#add-task");
@@ -237,6 +224,7 @@ function standardList(list) {
 function search() {
   const input = document.getElementById("search");
   let filter = input.value.toUpperCase();
+  todoHeader.textContent = "Search";
   for (let i = 0; i < todoItems.length; i++) {
     for (text in todoItems[i]) {
       textValue = todoItems[i].text;
